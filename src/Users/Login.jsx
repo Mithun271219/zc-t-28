@@ -9,6 +9,8 @@ function Login() {
     let navigate = useNavigate();
     let { users, setIsLogin, isLogin } = useContext(contexts)
 
+    //const [loginId, setloginId] = useState({})
+
     const initialValues = {
         username: '', password: ''
     }
@@ -18,7 +20,17 @@ function Login() {
         validationSchema: ValidateLogin,
         onSubmit: (values) => {
             //console.log('isloged in: ', isLogin)
-            console.table(values)
+            users.map((usersele) => {
+                values.reduce((loginele) => {
+                    if (usersele.username === loginele.uername && usersele.password === loginele.password) {
+                        setIsLogin(true)
+                    }
+                    else setIsLogin(false)
+
+                    console.log(isLogin)
+                })
+            })
+            //console.table(values)
         }
     })
 
